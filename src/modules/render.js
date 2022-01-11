@@ -9,10 +9,11 @@ export const render = (users) => { //вызвали функцию в index, п�
         //теперь необходимо отрисовывоть каждого юзера в таблице
         //получим таблицу и будем отррисовывать каждого юзера в виде строки
     const tbody = document.querySelector('#table-body')
+    tbody.innerHTML = '' //чтобы не дублировался список с вновь добавленным юзером
     users.forEach(user => {
         //при каждой итерации будем вписывать новую строчку в верстку
         tbody.insertAdjacentHTML('beforeend', `
-        <tr>
+        <tr data-key="${user.id}">
             <th scope="row">${user.id}</th> 
             <td>${user.name}</td>
             <td>${user.email}</td>
@@ -25,10 +26,10 @@ export const render = (users) => { //вызвали функцию в index, п�
             </td>
             <td>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-warning">
+                    <button type="button" class="btn btn-warning btn-edit">
                         <i class="bi-pencil-square"></i>
                     </button>
-                    <button type="button" class="btn btn-danger">
+                    <button type="button" class="btn btn-danger btn-remove">
                         <i class="bi-person-x"></i>
                     </button>
                 </div>
