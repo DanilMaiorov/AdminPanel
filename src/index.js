@@ -6,5 +6,9 @@ import { UserService } from './modules/userService'; //импортируем ч
 
 window.userService = new UserService // в таком случае нам не обязательно передавать userService в переменныее, потому что это стал глобальный объект
 
+userService.getUsers().then(data => { //вызовем метод getUsers и обработаем еще раз чтобы с данными можно было работать
+    console.log(data);
+})
+
 
 render(userService.users);//передадим userService.users
