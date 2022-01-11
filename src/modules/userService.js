@@ -61,7 +61,7 @@ export class UserService {
     } 
 
     editUser(id, user) {
-        //передаем в него id строки и .pthf//'PUT'
+        //передаем в него id строки и user//'PUT'
         return fetch (`http://localhost:8080/users/${id}`, {
             method: 'PUT',
             body: JSON.stringify(user),//передаем user 
@@ -69,5 +69,9 @@ export class UserService {
                 "Content-Type": "application/json"
             } 
         }).then(res => res.json()) //пишем через обратные кавычки и для запроса 'DELETE' нужно добавить /id и добавим раскрытие данных и вызовем этот м
+    }
+
+    filterUsers(filterOption) { //передаем в данный метод опцию, которую будем проверять на тру или фолс
+        return fetch (`http://localhost:8080/users?${filterOption}=true`).then(res => res.json()) //'GET'
     }
 }
