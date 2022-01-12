@@ -1,6 +1,26 @@
 import { render } from "./render"
 import { warning } from "./helpers"
 
+export const sortUsers = () => {
+    const headerSortIsChildren = document.querySelector('#sort-is-children')
+    headerSortIsChildren.style.cursor = 'pointer'
+    let isSort = false
+    headerSortIsChildren.addEventListener('click', () => {
+        userService.getResponse(`http://localhost:8080/users?_sort=children&_order=${isSort ? 'asc' : 'desc'}`).then(users => {
+            render(users)
+        })
+        .catch(error => {
+            console.log('Неверно указан URL')
+            warning(error)
+        })
+        isSort = !isSort
+        })
+
+    
+}
+/* import { render } from "./render"
+import { warning } from "./helpers"
+
 export const sortUsers = () => { //модуль для сортировки пользователей 
     const headerSortIsChildren = document.querySelector('#sort-is-children') //определим элемент, по клику на который будет производиться сортировка
     headerSortIsChildren.style.cursor = 'pointer' //сделаем курсор при наведении
@@ -13,7 +33,7 @@ export const sortUsers = () => { //модуль для сортировки по
             value: isSort ? 'asc' : 'desc', //если тру, то отрисовываем так, если фолс то иначе
         }).then(users => {
             render(users) //отрисовываем 
-        }) */
+        }) 
         userService.getResponse(`http://localhost:8080/users?_sort=children&_order=${isSort ? 'asc' : 'desc'}`).then(users => {
             render(users)
         })
@@ -25,4 +45,4 @@ export const sortUsers = () => { //модуль для сортировки по
         })
 
     
-}
+} */

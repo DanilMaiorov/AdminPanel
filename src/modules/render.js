@@ -1,4 +1,35 @@
-export const render = (users) => { //вызвали функцию в index, передали в неё класс и теперь обращаемся к классу(а класс это объект) и к его свойствам
+export const render = (users) => { 
+        const tbody = document.querySelector('#table-body')
+        tbody.innerHTML = ''
+        users.forEach(user => {
+            tbody.insertAdjacentHTML('beforeend', `
+            <tr data-key="${user.id}">
+                <th scope="row">${user.id}</th> 
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.children ? 'Есть' : 'Нет'}</td>
+                <td>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch"
+                            id="form-children" ${user.permissions ? 'checked' : ''}> 
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-warning btn-edit">
+                            <i class="bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-remove">
+                            <i class="bi-person-x"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            `) 
+        })
+}
+
+    /* export const render = (users) => { //вызвали функцию в index, передали в неё класс и теперь обращаемся к классу(а класс это объект) и к его свойствам
 //ПОСКОЛЬКУ ВЫЗВАЛИ userService глобально и удалили в передаче в качестве аргумента при вызове функции, то можем удалить и здесь и обращаться через глобальный объект
 //window.userService.users = [{ //проверяем работу геттера и сеттера, передаем пустой id
     //    id: 0
@@ -40,3 +71,4 @@ export const render = (users) => { //вызвали функцию в index, п�
         //В ФАЙЛЕ DB.JSON ПЕРЕИМЕНОВЫВАЕМ ОБЪЕКТ В USERS    
 })
 }
+ */
