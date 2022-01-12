@@ -1,67 +1,39 @@
 {
   "users": [
     {
-      "name": "Sergach",
-      "email": "123@13",
+      "name": "GENA",
+      "email": "GENA@GENA",
       "children": true,
-      "permissions": false,
+      "permissions": true,
       "id": 1
     },
     {
-      "name": "oleger",
-      "email": "pecheneg@pecheneg",
+      "name": "OLEG",
+      "email": "OLEG@OLEG",
+      "children": false,
+      "permissions": false,
+      "id": 2
+    },
+    {
+      "name": "VASA",
+      "email": "VASA@VASA",
+      "children": false,
+      "permissions": true,
+      "id": 3
+    },
+    {
+      "name": "MAGA",
+      "email": "MAGA@MAGA",
+      "children": true,
+      "permissions": false,
+      "id": 4
+    },
+    {
+      "name": "LENA",
+      "email": "LENA@LENA",
       "children": true,
       "permissions": true,
-      "id": 8
-    },
-    {
-      "name": "qwer",
-      "email": "qwe@qwe.ru",
-      "children": false,
-      "permissions": true,
-      "id": 9
-    },
-    {
-      "name": "qwer",
-      "email": "234@234",
-      "children": false,
-      "permissions": true,
-      "id": 10
-    },
-    {
-      "name": "qwer",
-      "email": "pecheneg@pecheneg",
-      "children": false,
-      "permissions": true,
-      "id": 11
-    },
-    {
-      "name": "qwer",
-      "email": "qwe@qwe.ru",
-      "children": false,
-      "permissions": true,
-      "id": 12
-    },
-    {
-      "name": "qwer",
-      "email": "qwe@qwe.ru",
-      "children": false,
-      "permissions": false,
-      "id": 13
-    },
-    {
-      "name": "qwer",
-      "email": "qwe@qwe.ru",
-      "children": false,
-      "permissions": false,
-      "id": 14
-    },
-    {
-      "name": "qwer",
-      "email": "qwe@qwe.ru",
-      "children": false,
-      "permissions": false,
-      "id": 15
+      "id": 5
     }
   ]
 }

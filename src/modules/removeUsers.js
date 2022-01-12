@@ -1,3 +1,4 @@
+import { warning } from "./helpers"
 import { render } from "./render"
 
 export const removeUsers = () => { //функция для удаления юзеров
@@ -21,7 +22,15 @@ export const removeUsers = () => { //функция для удаления юз
                 userService.getResponse('http://localhost:8080/users').then(users => { 
                     render(users)
                 })
+                .catch(error => {
+                    console.log('Неверно указан URL')
+                    warning(error)
+                }) 
             })
+            .catch(error => {
+                console.log('Неверно указан URL')
+                warning(error)
+            }) 
         }
     })
 }

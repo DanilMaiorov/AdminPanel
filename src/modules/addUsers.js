@@ -29,7 +29,6 @@ export const addUsers = () => { //модуль для получения дан�
                 userService.getResponse('http://localhost:8080/users').then(users => {  
                     render(users)
                     form.reset()
-                    warningNone()
                 })
                 .catch(error => {
                     console.log('Неверно указан URL')

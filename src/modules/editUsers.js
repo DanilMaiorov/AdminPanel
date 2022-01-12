@@ -1,4 +1,5 @@
 import { render } from "./render"
+import { warning } from "./helpers"
 
 export const editUsers = () => { //функция для удаления юзеров
     //получим таблицу и будем отррисовывать каждого юзера в виде строки
@@ -56,7 +57,15 @@ export const editUsers = () => { //функция для удаления юзе
                     form.reset()
                     form.removeAttribute('data-method')
                 })
-            })  
+                .catch(error => {
+                    console.log('Неверно указан URL')
+                    warning(error)
+                }) 
+            })
+            .catch(error => {
+                console.log('Неверно указан URL')
+                warning(error)
+            })   
         }
     })
 }

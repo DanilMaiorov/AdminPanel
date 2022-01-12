@@ -20,7 +20,7 @@ export const changePermissions = () => { //функция для удалени�
                     render(users) //нужно импортировать render в этот модуль вверху модуля
                 })
             }) */
-             userService.sendRequest(`http://localhost:8080/u78sers/${id}`, 'PATCH', {permissions: input.checked}).then(res => { 
+             userService.sendRequest(`http://localhost:8080/users/${id}`, 'PATCH', {permissions: input.checked}).then(res => { 
                 userService.getResponse('http://localhost:8080/users').then(users => {
                     render(users)
                 })
@@ -32,7 +32,6 @@ export const changePermissions = () => { //функция для удалени�
                 console.log('Неверно указан URL')
                 warning(error)
             }) 
-
         }
     })
 }
