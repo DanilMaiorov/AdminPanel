@@ -12,9 +12,14 @@ export const removeUsers = () => { //функция для удаления юз
             const id = tr.dataset.key //для определения идентификатора пользователя, которого удаляем
             //в userService добавляем новый метод removeUser
             
-            userService.removeUser(id).then(res => { //вызовем и передадим в него id
+/*             userService.removeUser(id).then(res => { //вызовем и передадим в него id
                 userService.getUsers().then(users => { //вызовем getUsers(), который берет данные с сервера, юрл которого передан в userService и запустим функцию рендер для автоматической отрисовки всех польователей после удаления
                     render(users) //нужно импортировать render в этот модуль вверху модуля
+                })
+            }) */
+            userService.sendRequest(`http://localhost:8080/users/${id}`, 'DELETE').then(res => {
+                userService.getResponse('http://localhost:8080/users').then(users => { 
+                    render(users)
                 })
             })
         }

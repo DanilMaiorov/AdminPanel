@@ -16,11 +16,17 @@ export const editUsers = () => { //функция для удаления юзе
             //dataset - команда для того, чтобы достать дата атрибут
             const id = tr.dataset.key //для определения идентификатора пользователя, которого удаляем
             //в userService добавляем новый метод editUser
-            userService.getUser(id).then(user => { //вызовем и передадим в него id 
+/*             userService.getUser(id).then(user => { //вызовем и передадим в него id 
                 nameInput.value = user.name // благодаря этому действию мы получаем данные пользователя в форме для того, чтобы их редактиврова
                 emailInput.value = user.email
                 childrenInput.checked = user.children // если оставить как есть, то при нажатии на кнопкеу сохранить, уйдёт просто пост запрос
                 //обратимся к форме
+                form.dataset.method = id
+            }) */
+            userService.getResponse(`http://localhost:8080/users/${id}`).then(user => {
+                nameInput.value = user.name
+                emailInput.value = user.email
+                childrenInput.checked = user.children
                 form.dataset.method = id
             })
         }
@@ -36,11 +42,17 @@ export const editUsers = () => { //функция для удаления юзе
                 children: childrenInput.checked,
                 permissions: false
             } //сейчас нужно написать новый метод для добавления пользователя в нашу базу -> переходим в метод userService
-            console.log(user)
-            userService.editUser(id, user).then(() => { //вызовем метод и передадим в него измененного юзера
+              /*userService.editUser(id, user).then(() => { //вызовем метод и передадим в него измененного юзера
             //в этом моменте в этом месте мы видим ответ мы можем запустить новый метод
                 userService.getUsers().then(users => { //вызовем getUsers(), который берет данные с сервера, юрл которого передан в userService и запустим функцию рендер для автоматической отрисовки сохраненного пользователя 
                     render(users) //нужно импортировать render в этот модуль вверху модуля
+                    form.reset()
+                    form.removeAttribute('data-method')
+                })
+            })   */
+            userService.sendRequest(`http://localhost:8080/users/${id}`, 'PUT', user).then(() => { 
+                userService.getResponse('http://localhost:8080/users').then(users => { 
+                    render(users)
                     form.reset()
                     form.removeAttribute('data-method')
                 })
